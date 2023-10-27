@@ -10,14 +10,15 @@ function Board() {
 
 
     const winner = calculateWinner(squares);
+
     let status;
-    if (winner) {
+    if (winner === 'X' || winner === 'O') {
         status = "Winner: " + winner;
+    } else if (winner === 'Draw') {
+        status = "Draw";
     } else {
         status = "Next player: " + (xIsNext ? "X" : "O");
     }
-
-
     function handleClick(i) {
 
         if (squares[i] || calculateWinner(squares)) {
@@ -79,6 +80,11 @@ function Board() {
                 return squares[a];
             }
         }
+
+        if (squares.every(square => square)) {
+            return "Draw";
+        }
+
         return null;
     }
 }
