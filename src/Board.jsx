@@ -4,12 +4,25 @@ import Square from './Square.jsx'
 
 function Board() {
 
+
+    const [xIsNext, setxIsNext] = useState(true)
     const [squares, setSquares] = useState(Array(9).fill(null))
 
 
     function handleClick(i) {
+
+
+
         const nextSquares = squares.slice();
-        nextSquares[i] = "X";
+
+        if (xIsNext) {
+            nextSquares[i] = "X";
+            setxIsNext(false);
+        } else {
+            nextSquares[i] = "O";
+            setxIsNext(true);
+        }
+
         setSquares(nextSquares);
     }
 
