@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-function Square({ value }) {
+function Square() {
+
+
+    const [value, setValue] = useState('')
+
+    function handleOnclick() {
+        console.log('was clocked')
+        setValue('X')
+
+    }
+
     return (
         <>
-            <button className="square">{value}</button>
+            <button className="square" onClick={handleOnclick} >{value}</button >
         </>
     )
 }
