@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Square from './Square.jsx'
+import Confetti from 'react-confetti';
 
 
 function Board() {
@@ -14,6 +15,7 @@ function Board() {
     let status;
     if (winner === 'X' || winner === 'O') {
         status = "Winner: " + winner;
+
     } else if (winner === 'Draw') {
         status = "Draw";
     } else {
@@ -41,7 +43,7 @@ function Board() {
     return (
         <>
 
-
+            {winner && winner !== 'Draw' && <Confetti />}
 
             <div className="status">{status}</div>
             <div className="board-row">
