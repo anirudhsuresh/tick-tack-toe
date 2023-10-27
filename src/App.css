@@ -1,3 +1,18 @@
+/* Base Styles and Colors */
+:root {
+  --primary-bg: #2a2a2a;
+  --light-shadow: #3e3e3e;
+  --dark-shadow: #161616;
+  --text-light: #e0e0e0;
+  --neu-primary: #292929;
+  --neu-secondary: #383838;
+}
+
+/* General Styles */
+body {
+  background-color: var(--neu-primary);
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -9,11 +24,12 @@
   height: 6em;
   padding: 1.5em;
   will-change: filter;
-  transition: filter 300ms;
+  transition: filter 300ms, transform 0.5s;
 }
 
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
+  transform: scale(1.05);
 }
 
 .logo.react:hover {
@@ -38,8 +54,73 @@
 
 .card {
   padding: 2em;
+  background: var(--neu-secondary);
+  border-radius: 10px;
+  box-shadow: -5px -5px 10px var(--light-shadow),
+    5px 5px 10px var(--dark-shadow);
 }
 
 .read-the-docs {
-  color: #888;
+  color: var(--text-light);
+}
+
+.board-row {
+  display: flex;
+  justify-content: center;
+  background: var(--primary-bg);
+}
+
+.square {
+  font-size: 30px;
+  width: 160px;
+  height: 160px;
+  background: var(--primary-bg);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.5s, box-shadow 0.5s, transform 0.3s;
+
+  box-shadow: -5px -5px 10px var(--light-shadow),
+    5px 5px 10px var(--dark-shadow);
+}
+
+.square:hover {
+  background-color: var(--neu-secondary);
+}
+
+.square:active {
+  transform: scale(0.95);
+  box-shadow: inset -3px -3px 7px var(--light-shadow),
+    inset 3px 3px 7px var(--dark-shadow);
+}
+
+.square:not(:empty) {
+  color: var(--text-light);
+}
+
+.status {
+  font-size: 24px;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  color: var(--text-light);
+  background: var(--primary-bg);
+  padding: 0.5rem 1rem;
+  box-shadow: -5px -5px 10px var(--light-shadow),
+    5px 5px 10px var(--dark-shadow);
+  border-radius: 10px;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+  .square {
+    width: 120px;
+    height: 120px;
+    font-size: 24px;
+  }
+
+  .status {
+    font-size: 20px;
+  }
 }
